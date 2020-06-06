@@ -4,9 +4,23 @@ date: 2020-06-06T00:26:57.404Z
 title: Awesome Images
 description: Fix for gatsby-plugin-mdx and gatsby-remark-images
 ---
-![great gatsby](/assets/great.jpg "great gatsby")
 
-From [@cwgw](https://github.com/cwgw)...
+![great gatsby](../assets/great.jpg "great gatsby")
+
+## Netlify CMS Media Configuration
+
+First, in your `static/admin/config.yml`, make sure you have the following:
+
+```
+media_folder: content/assets
+public_folder: ../assets
+```
+
+Docs: https://www.netlifycms.org/docs/configuration-options/#media-and-public-folders.
+
+## Gatsby Plugins
+
+From [@cwgw](https://github.com/cwgw):
 
 So digging a little deeper, it looks like Gatsby only looks for "subplugins" at one specific path, `options.plugins`.
 
@@ -15,13 +29,13 @@ So digging a little deeper, it looks like Gatsby only looks for "subplugins" at 
 If you try this…
 
 ```javascript
-    {
-      resolve: 'gatsby-plugin-mdx',
-      options: {
-        gatsbyRemarkPlugins: [ `gatsby-remark-images` ],
-        plugins: [ `gatsby-remark-images` ],
-      }
-    },
+{
+  resolve: 'gatsby-plugin-mdx',
+  options: {
+    gatsbyRemarkPlugins: [ `gatsby-remark-images` ],
+    plugins: [ `gatsby-remark-images` ],
+  }
+},
 ```
 
 …everything works as it should.
